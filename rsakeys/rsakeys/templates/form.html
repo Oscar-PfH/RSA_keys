@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<footer class="my-5">
+    <div id="content" class="w-100">
+        <table class="table table-hover" style="border-radius: 10px; max-width: 100%;">
+            {% if keytype %}
+            <tr class="text-center">
+                <th class="font-weight-bold col-lg-2">Campo</th>
+                <th class="font-weight-bold col-lg-10">Valor</th>
+            </tr>
+            {% endif %}
+
+            {% if keytype == 'public' %}
+            <tr class="table-dark">
+                <td class="table-secondary">Modulus</td>
+                <td><textarea rows="6" style="width: 100%; resize: none; border: none; padding: 1;" readonly>{{ key.modulus }}</textarea></td>
+            </tr>
+            <tr class="table-dark">
+                <td class="table-secondary">Exponent</td>
+                <td>{{ key.exponent }}</td>
+            </tr>
+            {% endif %}
+
+            {% if keytype == 'private' %}
+            {% for campos, i in info_list %}
+            <tr class="table-dark" style="word-wrap: break-word;">
+                <td class="font-weight-bold col-lg-2 table-secondary">{{ campos }}</td>
+                <td class="col-lg-10"><textarea rows="6" style="width: 100%; resize: none; border: none; padding: 1;" readonly>{{ i }}</textarea></td>
+            </tr>
+            {% endfor %}
+            
+            <!--
+                <tr class="table-info">
+                <td>M&oacute;dulo</td>
+                <td><p>{{ key.n }}</p></td>
+            </tr>
+            <tr class="table-info">
+                <td>Exponente</td>
+                <td>{{ key.d }}</td>
+            </tr>
+            <tr>
+                <td>M&oacute;dulo</td>
+                <td><p>{{ key.n }}</p></td>
+            </tr>
+            <tr>
+                <td>Exponente</td>
+                <td>{{ key.d }}</td>
+            </tr>
+            <tr>
+                <td>M&oacute;dulo</td>
+                <td><p>{{ key.n }}</p></td>
+            </tr>
+            <tr>
+                <td>Exponente</td>
+                <td>{{ key.d }}</td>
+            </tr>
+            -->
+            
+            {% endif %}
+        </table>
+    </div>
+</footer>
+
+{% endblock %}
